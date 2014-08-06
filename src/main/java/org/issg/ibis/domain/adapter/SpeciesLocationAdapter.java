@@ -37,5 +37,9 @@ public class SpeciesLocationAdapter {
 	public String getBiologicalStatus() {
 		return AdapterUtils.coalesce(sl.getBiologicalStatus());
 	}
+	
+	public String getOrganismType() {
+		return AdapterUtils.coalesce(sl.getSpecies().getOrganismType().getLabel());
+	}
 
 }
