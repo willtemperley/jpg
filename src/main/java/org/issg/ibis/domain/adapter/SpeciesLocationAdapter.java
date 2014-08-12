@@ -1,5 +1,6 @@
 package org.issg.ibis.domain.adapter;
 
+import org.issg.ibis.domain.OrganismType;
 import org.issg.ibis.domain.SpeciesLocation;
 
 public class SpeciesLocationAdapter {
@@ -39,7 +40,11 @@ public class SpeciesLocationAdapter {
 	}
 	
 	public String getOrganismType() {
-		return AdapterUtils.coalesce(sl.getSpecies().getOrganismType().getLabel());
+		OrganismType ot = sl.getSpecies().getOrganismType();
+		if (ot != null) {
+			return AdapterUtils.coalesce(ot.getLabel());
+		}
+		return "";
 	}
 
 }
