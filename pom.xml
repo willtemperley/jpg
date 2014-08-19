@@ -3,14 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- The link to the hibernate-validator parent POM only exists out of convenience 
-		since we are creating this archetype from an existing module of the Hibernate 
-		Validator code base. If you want to know more about this process check the 
-		maven-archetype-plugin documentation http://maven.apache.org/archetype/maven-archetype-plugin, 
-		epecially the goal create-from-project If you want to use this quick-start 
-		project as the base for your own application you should remove the <parent> 
-		entry. See also the other pointers in this pom. -->
-
 	<name>IBIS Domain</name>
 	<groupId>org.issg.ibis</groupId>
 	<artifactId>ibis-domain</artifactId>
@@ -60,7 +52,7 @@
 			<version>${hibernate-spatial.version}</version>
 			<scope>compile</scope>
 			<exclusions>
-				<exclusion>  <!-- declare the exclusion here -->
+				<exclusion>
 					<groupId>org.postgis</groupId>
 					<artifactId>postgis-jdbc</artifactId>
 				</exclusion>
@@ -111,8 +103,6 @@
 		</dependency>
 	</dependencies>
 
-
-
 	<build>
 		<defaultGoal>test</defaultGoal>
 		<plugins>
@@ -160,7 +150,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 	<repositories>
 		<repository>
