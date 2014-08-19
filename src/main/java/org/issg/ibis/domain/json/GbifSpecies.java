@@ -2,7 +2,9 @@ package org.issg.ibis.domain.json;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Generated;
+
 import com.google.gson.annotations.Expose;
 
 @Generated("org.jsonschema2pojo")
@@ -307,6 +309,20 @@ public class GbifSpecies {
 
 	public void setNubKey(Long nubKey) {
 		this.nubKey = nubKey;
+	}
+	
+	@Override
+	public String toString() {
+		if (authorship != null) {
+			return species + authorship;
+		}
+		if (species != null) {
+			return species;
+		}
+		if (genus != null) {
+			return genus;
+		}
+		return "?";
 	}
 
 }

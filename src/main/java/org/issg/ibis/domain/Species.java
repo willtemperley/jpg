@@ -26,8 +26,6 @@ import org.issg.ibis.domain.adapter.SpeciesImpactAdapter;
 import org.issg.ibis.domain.json.GbifSpecies;
 import org.issg.ibis.domain.view.LocationView;
 
-import com.google.gson.Gson;
-
 @Entity
 @NamedQueries({
 		@NamedQuery(name = Species.NATIVE, query = "from Species s where exists (select 1 from SpeciesImpact i where i.nativeSpecies.id = s.id) order by name"),
@@ -39,22 +37,16 @@ public class Species {
 
 	public static final String INVASIVE = "Invasive";
 
-	public void populateFromJson() {
+	public void populate(GbifSpecies gsp) {
 
-//		String json = getGbifJson();
-//
-//		if (json != null && !json.isEmpty()) {
-//
-//			Gson g = new Gson();
-//			GbifSpecies gsp = g.fromJson(json, GbifSpecies.class);
-//
-//			setKingdom(gsp.getKingdom());
-//			setPhylum(gsp.getPhylum());
-//			setClazz(gsp.getClazz());
-//			setOrder(gsp.getOrder());
-//			setFamily(gsp.getFamily());
-//			setGenus(gsp.getGenus());
-//		}
+			setName(gsp.getSpecies());
+			setKingdom(gsp.getKingdom());
+			setPhylum(gsp.getPhylum());
+			setClazz(gsp.getClazz());
+			setOrder(gsp.getOrder());
+			setFamily(gsp.getFamily());
+			setGenus(gsp.getGenus());
+			setUri("http://www.gbif.org/species/" + gsp.getKey());
 	}
 
 	private Long id;
@@ -85,6 +77,7 @@ public class Species {
 	private String name;
 
 	@Column
+	@NotNull
 	public String getName() {
 		return name;
 	}
@@ -115,17 +108,6 @@ public class Species {
 	// public void setGenus(Taxon genus) {
 	// this.genus = genus;
 	// }
-
-	private String species;
-
-	@Column
-	public String getSpecies() {
-		return species;
-	}
-
-	public void setSpecies(String species) {
-		this.species = species;
-	}
 
 	private String synonyms;
 

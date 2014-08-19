@@ -20,7 +20,7 @@ public class QSpecies extends EntityPathBase<Species> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QSpecies species1 = new QSpecies("species1");
+    public static final QSpecies species = new QSpecies("species");
 
     public final StringPath authority = createString("authority");
 
@@ -65,8 +65,6 @@ public class QSpecies extends EntityPathBase<Species> {
     public final NumberPath<Integer> redlistId = createNumber("redlistId", Integer.class);
 
     public final SetPath<Reference, QReference> references = this.<Reference, QReference>createSet("references", Reference.class, QReference.class, PathInits.DIRECT2);
-
-    public final StringPath species = createString("species");
 
     public final SetPath<SpeciesLocation, QSpeciesLocation> speciesLocations = this.<SpeciesLocation, QSpeciesLocation>createSet("speciesLocations", SpeciesLocation.class, QSpeciesLocation.class, PathInits.DIRECT2);
 
