@@ -176,16 +176,16 @@ public class Species {
 		this.gbifJson = gbifJson;
 	}
 
-	private RedlistCategory redlistCategory;
+	private ConservationClassification conservationClassification;
 
 	@ManyToOne
-	@JoinColumn(name = "redlist_category_id")
-	public RedlistCategory getRedlistCategory() {
-		return redlistCategory;
+	@JoinColumn(name = "conservation_classification_id")
+	public ConservationClassification getConservationClassification() {
+		return conservationClassification;
 	}
 
-	public void setRedlistCategory(RedlistCategory redlistCategory) {
-		this.redlistCategory = redlistCategory;
+	public void setConservationClassification(ConservationClassification redlistCategory) {
+		this.conservationClassification = redlistCategory;
 	}
 
 	private Integer redlistId;

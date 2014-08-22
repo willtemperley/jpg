@@ -16,7 +16,7 @@ public class SpeciesLocationAdapter {
 	}
 
 	public String getRedlistCategory() {
-		return AdapterUtils.coalesce(sl.getSpecies().getRedlistCategory());
+		return AdapterUtils.coalesce(sl.getSpecies().getConservationClassification());
 	}
 
 	public String getCommonName() {

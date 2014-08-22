@@ -9,14 +9,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "ibis", name = "redlist_category")
-public class RedlistCategory {
+@Table(schema = "ibis", name = "conservation_classification")
+public class ConservationClassification {
 
     private Long id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
-    @SequenceGenerator(allocationSize = 1, name = "seq", sequenceName = "ibis.redlist_code_id_seq")
+    @SequenceGenerator(allocationSize = 1, name = "seq", sequenceName = "ibis.conservation_classification_id_seq")
     public Long getId() {
         return id;
     }
@@ -24,27 +24,26 @@ public class RedlistCategory {
         this.id = id;
     }
 
-    private String redlistCode;
+    private String abbreviation;
 
-    @Column(name="redlist_code")
-    public String getRedlistCode() {
-        return redlistCode;
-    }
+    public String getAbbreviation() {
+		return abbreviation;
+	}
+    
+    public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
+	}
 
-    public void setRedlistCode(String redlistCode) {
-        this.redlistCode = redlistCode;
-    }
-
-    private String label;
+    private String name;
 
     @Column
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
+    public String getName() {
+		return name;
+	}
+    
+    public void setName(String name) {
+		this.name = name;
+	}
 
     @Override
     public int hashCode() {
@@ -57,8 +56,8 @@ public class RedlistCategory {
     @Override
     public boolean equals(Object obj) {
 
-        if (obj instanceof RedlistCategory) {
-           RedlistCategory otherObj = (RedlistCategory) obj;
+        if (obj instanceof ConservationClassification) {
+           ConservationClassification otherObj = (ConservationClassification) obj;
            if (otherObj.getId().equals(this.getId())) {
                 return true;
             }
@@ -68,6 +67,6 @@ public class RedlistCategory {
 
     @Override
     public String toString() {
-        return label;
+        return name;
     }
 }

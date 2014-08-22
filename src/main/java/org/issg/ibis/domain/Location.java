@@ -221,18 +221,6 @@ public class Location {
     public void setDesignatedAreaType(DesignatedAreaType designatedAreaType) {
         this.designatedAreaType = designatedAreaType;
     }
-
-    private IslandType islandType;
-
-    @ManyToOne
-    @JoinColumn(name="island_type_id")
-    public IslandType getIslandType() {
-        return islandType;
-    }
-
-    public void setIslandType(IslandType islandType) {
-        this.islandType = islandType;
-    }
     
     private String islandGroup;
     

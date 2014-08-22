@@ -29,6 +29,29 @@ public class Reference {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    private String url;
+    
+    @Column
+    public String getUrl() {
+		return url;
+	}
+
+    public void setUrl(String url) {
+		this.url = url;
+	}
+
+    private String label;
+    
+    @Column
+    public String getLabel() {
+		return label;
+	}
+    
+    public void setLabel(String label) {
+		this.label = label;
+	}
+    
 
     private String content;
 
