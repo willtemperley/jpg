@@ -46,6 +46,18 @@ public class Species {
 			setOrder(gsp.getOrder());
 			setFamily(gsp.getFamily());
 			setGenus(gsp.getGenus());
+			
+			setAuthority(gsp.getAuthorship());
+			
+			String sourceId = gsp.getSourceId();
+			if (sourceId != null) {
+				try {
+					setRedlistId(Integer.valueOf(sourceId));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
 			setUri("http://www.gbif.org/species/" + gsp.getKey());
 	}
 

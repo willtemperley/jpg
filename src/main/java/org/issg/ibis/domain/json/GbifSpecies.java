@@ -21,7 +21,7 @@ public class GbifSpecies {
 	private Long numDescendants;
 	@Expose
 	private Long kingdomKey;
-	@Expose
+	
 	private String sourceId;
 	@Expose
 	private String nameType;
