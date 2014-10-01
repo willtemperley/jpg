@@ -2,9 +2,12 @@ package org.issg.ibis.domain;
 
 import java.util.List;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityResult;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +18,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
@@ -23,6 +28,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
@@ -48,6 +54,19 @@ public class Location {
 		this.id = id;
 	}
 
+	// private LocationGeom locationGeom;
+	//
+	// @OneToOne(cascade = CascadeType.ALL, optional=false, fetch =
+	// FetchType.LAZY)
+	// @PrimaryKeyJoinColumn
+	// public LocationGeom getLocationGeom() {
+	// return locationGeom;
+	// }
+	//
+	// public void setLocationGeom(LocationGeom locationGeom) {
+	// this.locationGeom = locationGeom;
+	// }
+
 	public void populate(GID val) {
 		if (val != null) {
 			this.name = val.toString();
@@ -56,22 +75,22 @@ public class Location {
 			this.country = val.getCountry();
 			this.setPrefix("GID");
 			this.setIdentifier(val.getId().toString());
-			
-			//Envelope??
+
+			// Envelope??
 		}
 	}
 
-	// private Geometry geom;
-	//
-	// @Column
-	// @Type(type = "org.hibernate.spatial.GeometryType")
-	// public Geometry getGeom() {
-	// return geom;
-	// }
-	//
-	// public void setGeom(Geometry geom) {
-	// this.geom = geom;
-	// }
+	private Geometry geom;
+
+	@Basic(fetch = FetchType.LAZY)
+	@Type(type = "org.hibernate.spatial.GeometryType")
+	public Geometry getGeom() {
+		return geom;
+	}
+
+	public void setGeom(Geometry geom) {
+		this.geom = geom;
+	}
 
 	private List<LocationSummary> locationSummaries;
 
