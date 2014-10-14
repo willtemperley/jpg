@@ -147,7 +147,7 @@ public class Role {
      */
     @Transient
     public Set<String> getStringPermissions() {
-        
+    	
         if (isAnonymous()) {
             return stringPermissions;
         }

@@ -23,4 +23,24 @@ public class LocationType {
     	return getId();
     }
 
+    @Override
+    public int hashCode() {
+        if (id != null) {
+            return id.hashCode();
+        }
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof LocationType) {
+           LocationType otherObj = (LocationType) obj;
+           if (otherObj.getId().equals(this.getId())) {
+                return true;
+            }
+        }
+        return super.equals(obj);
+    }
+
 }

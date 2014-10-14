@@ -77,6 +77,18 @@ public class GID {
 	public void setGeom(Point geom) {
 		this.geom = geom;
 	}
+	
+	
+	private Double area;
+	
+	@Column
+	public Double getArea() {
+		return area;
+	}
+	
+	public void setArea(Double area) {
+		this.area = area;
+	}
 
 	private Country country;
 

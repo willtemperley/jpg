@@ -27,8 +27,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.spatial.jts.JTS;
 
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
@@ -75,8 +79,30 @@ public class Location {
 			this.country = val.getCountry();
 			this.setPrefix("GID");
 			this.setIdentifier(val.getId().toString());
+			
 
-			// Envelope??
+			this.area = val.getArea();
+			
+			//Very approximate box created
+			if (area != null) {
+
+				Envelope env = new Envelope();
+				double onesqkmindegrees = Math.pow(0.0083333333, 2);
+				double nDegs = area * onesqkmindegrees;
+				double halfsideLen = Math.sqrt(nDegs)/2;
+				System.out.println("side: " + halfsideLen);
+				
+				Coordinate ll = new Coordinate(longitude - halfsideLen, latitude - halfsideLen);
+				Coordinate ur = new Coordinate(longitude + halfsideLen, latitude + halfsideLen);
+				
+				env.expandToInclude(ll);
+				env.expandToInclude(ur);
+				
+				Polygon poly = (Polygon) JTS.getDefaultGeomFactory().toGeometry(env);
+
+				geom = new MultiPolygon(new Polygon[]{poly}, JTS.getDefaultGeomFactory());
+				
+			}
 		}
 	}
 

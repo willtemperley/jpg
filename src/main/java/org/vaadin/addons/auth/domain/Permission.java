@@ -29,6 +29,7 @@ public class Permission {
 
   private Action action;
 
+  @NotNull
   @ManyToOne
   public Action getAction() {
     return action;
