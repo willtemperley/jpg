@@ -40,7 +40,7 @@ public class ContentType {
     @Override
     public int hashCode() {
         if (id != null) {
-            id.intValue();
+            return id.intValue();
         }
         return super.hashCode();
     }
@@ -50,10 +50,7 @@ public class ContentType {
 
         if (obj instanceof ContentType) {
            ContentType otherObj = (ContentType) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

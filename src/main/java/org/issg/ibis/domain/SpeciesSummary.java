@@ -84,7 +84,7 @@ public class SpeciesSummary implements Content {
     @Override
     public int hashCode() {
         if (id != null) {
-            id.intValue();
+            return id.intValue();
         }
         return super.hashCode();
     }
@@ -97,10 +97,7 @@ public class SpeciesSummary implements Content {
            if (otherObj.getId() == null) {
                return false;
            }
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

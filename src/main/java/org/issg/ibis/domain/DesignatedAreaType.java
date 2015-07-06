@@ -48,10 +48,7 @@ public class DesignatedAreaType {
 
         if (obj instanceof DesignatedAreaType) {
            DesignatedAreaType otherObj = (DesignatedAreaType) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

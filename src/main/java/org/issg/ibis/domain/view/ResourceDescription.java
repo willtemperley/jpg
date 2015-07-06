@@ -88,7 +88,7 @@ public class ResourceDescription {
     @Override
     public int hashCode() {
         if (id != null) {
-            id.hashCode();
+            return id.hashCode();
         }
         return super.hashCode();
     }
@@ -98,10 +98,7 @@ public class ResourceDescription {
 
         if (obj instanceof ResourceDescription) {
            ResourceDescription otherObj = (ResourceDescription) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

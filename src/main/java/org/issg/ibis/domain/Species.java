@@ -295,11 +295,8 @@ public class Species {
 	public boolean getIsInvasive() {
 
 		Set<SpeciesImpact> isi = getNativeSpeciesImpacts();
-		if (isi != null && isi.size() > 0) {
-			return true;
-		}
+		return isi != null && isi.size() > 0;
 
-		return false;
 	}
 
 	/**
@@ -451,10 +448,7 @@ public class Species {
 
 		if (obj instanceof Species) {
 			Species otherObj = (Species) obj;
-			if (otherObj.getId().equals(this.getId())) {
-				return true;
-			}
-			return false;
+			return otherObj.getId().equals(this.getId());
 		}
 		return super.equals(obj);
 	}

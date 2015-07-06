@@ -3,7 +3,6 @@ package org.issg.ibis.domain;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityResult;
@@ -18,9 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
@@ -339,10 +336,7 @@ public class Location {
 
 		if (obj instanceof Location) {
 			Location otherObj = (Location) obj;
-			if (otherObj.getId().equals(this.getId())) {
-				return true;
-			}
-			return false;
+			return otherObj.getId().equals(this.getId());
 		}
 		return super.equals(obj);
 	}

@@ -55,4 +55,22 @@ public class Permission {
   public String toString() {
     return action.getLabel() + "_" + target.getName();
   }
+
+  @Override
+  public int hashCode() {
+      if (id != null) {
+          return id.intValue();
+      }
+      return super.hashCode();
+  }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Permission) {
+           Permission otherObj = (Permission) obj;
+          return otherObj.getId().equals(this.getId());
+        }
+        return super.equals(obj);
+    }
 }

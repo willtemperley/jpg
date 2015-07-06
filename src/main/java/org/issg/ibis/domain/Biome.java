@@ -75,10 +75,7 @@ public class Biome {
 
         if (obj instanceof Biome) {
            Biome otherObj = (Biome) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

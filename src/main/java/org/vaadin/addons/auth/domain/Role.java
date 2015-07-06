@@ -172,10 +172,15 @@ public class Role {
             return false;
         }
         Role otherRole = (Role) obj;
-        if (otherRole.getId().equals(this.getId())) {
-            return true;
+        return otherRole.getId().equals(this.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        if (id != null) {
+            return id.intValue();
         }
-        return false;
+        return super.hashCode();
     }
     
     /**
@@ -185,9 +190,6 @@ public class Role {
      */
     @Transient
     public boolean isAnonymous() {
-        if (id != null && id != 0) {
-            return false;
-        }
-        return true;
+        return !(id != null && id != 0);
     }
 }

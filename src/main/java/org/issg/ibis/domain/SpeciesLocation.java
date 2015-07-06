@@ -68,7 +68,7 @@ public class SpeciesLocation {
     @Override
     public int hashCode() {
         if (id != null) {
-            id.intValue();
+            return id.intValue();
         }
         return super.hashCode();
     }
@@ -78,10 +78,7 @@ public class SpeciesLocation {
 
         if (obj instanceof SpeciesLocation) {
            SpeciesLocation otherObj = (SpeciesLocation) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

@@ -43,9 +43,9 @@ public class SpeciesImpactAdapter {
 		return AdapterUtils.coalesce( si.getImpactMechanism());
 	}
 
-	public String getImpactOutcome() {
-		return AdapterUtils.coalesce( si.getImpactOutcome());
-	}
+//	public String getImpactOutcome() {
+//		return AdapterUtils.coalesce( si.getImpactOutcome());
+//	}
 
 	public String getBiologicalStatus() {
 		return AdapterUtils.coalesce( si.getBiologicalStatus());

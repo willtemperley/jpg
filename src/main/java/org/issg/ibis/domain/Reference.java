@@ -21,8 +21,6 @@ public class Reference {
     private Long id;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq")
-    @SequenceGenerator(allocationSize = 1, name = "seq", sequenceName = "ibis.reference_id_seq")
     public Long getId() {
         return id;
     }
@@ -52,7 +50,6 @@ public class Reference {
 		this.label = label;
 	}
     
-
     private String content;
 
     @Column
@@ -76,17 +73,17 @@ public class Reference {
         this.species = species;
     }
 
-    private Set<Location> locations;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "ibis.location_reference", joinColumns = @JoinColumn(name = "reference_id"), inverseJoinColumns = @JoinColumn(name = "location_id"))
-    public Set<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(Set<Location> locations) {
-        this.locations = locations;
-    }
+//    private Set<Location> locations;
+//
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "ibis.location_reference", joinColumns = @JoinColumn(name = "reference_id"), inverseJoinColumns = @JoinColumn(name = "location_id"))
+//    public Set<Location> getLocations() {
+//        return locations;
+//    }
+//
+//    public void setLocations(Set<Location> locations) {
+//        this.locations = locations;
+//    }
     
     @Override
     public String toString() {

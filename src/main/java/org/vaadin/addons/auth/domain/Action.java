@@ -43,4 +43,23 @@ public class Action {
     public void setLabel(String label) {
         this.label = label;
     }
+
+  @Override
+  public int hashCode() {
+      if (id != null) {
+          return id.intValue();
+      }
+      return super.hashCode();
+  }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Action) {
+           Action otherObj = (Action) obj;
+           return otherObj.getId().equals(this.getId());
+        }
+        return super.equals(obj);
+    }
+
 }

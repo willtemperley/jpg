@@ -2,22 +2,15 @@ package org.issg.ibis.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.Point;
-
-import java.util.Set;
 
 @Entity
 @Table(schema = "administrative_units", name = "gid")
@@ -117,11 +110,8 @@ public class GID {
 
         if (obj instanceof GID) {
            GID otherObj = (GID) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
-        }
+			return otherObj.getId().equals(this.getId());
+		}
         return super.equals(obj);
     }
 

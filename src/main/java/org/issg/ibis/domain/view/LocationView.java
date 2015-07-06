@@ -72,7 +72,7 @@ public class LocationView {
 	@Override
     public int hashCode() {
         if (id != null) {
-            id.intValue();
+            return id.intValue();
         }
         return super.hashCode();
     }
@@ -82,10 +82,7 @@ public class LocationView {
 
         if (obj instanceof LocationView) {
            LocationView otherObj = (LocationView) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

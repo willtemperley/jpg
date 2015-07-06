@@ -68,7 +68,7 @@ public class LocationSummary implements Content {
     @Override
     public int hashCode() {
         if (id != null) {
-            id.intValue();
+            return id.intValue();
         }
         return super.hashCode();
     }
@@ -80,10 +80,7 @@ public class LocationSummary implements Content {
            LocationSummary otherObj = (LocationSummary) obj;
 
            Long id2 = otherObj.getId();
-           if (id2 != null && id2.equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return id2 != null && id2.equals(this.getId());
         }
         return super.equals(obj);
     }

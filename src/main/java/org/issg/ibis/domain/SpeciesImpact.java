@@ -65,18 +65,18 @@ public class SpeciesImpact {
         this.impactMechanism = impactMechanism;
     }
 
-    private ImpactOutcome impactOutcome;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name="impact_outcome_id")
-    public ImpactOutcome getImpactOutcome() {
-        return impactOutcome;
-    }
-
-    public void setImpactOutcome(ImpactOutcome impactOutcome) {
-        this.impactOutcome = impactOutcome;
-    }
+//    private ImpactOutcome impactOutcome;
+//
+//    @NotNull
+//    @ManyToOne
+//    @JoinColumn(name="impact_outcome_id")
+//    public ImpactOutcome getImpactOutcome() {
+//        return impactOutcome;
+//    }
+//
+//    public void setImpactOutcome(ImpactOutcome impactOutcome) {
+//        this.impactOutcome = impactOutcome;
+//    }
 
     private Location location;
 
@@ -130,10 +130,7 @@ public class SpeciesImpact {
 
         if (obj instanceof SpeciesImpact) {
            SpeciesImpact otherObj = (SpeciesImpact) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

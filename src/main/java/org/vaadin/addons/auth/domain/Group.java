@@ -79,4 +79,22 @@ public class Group {
         return name;
     }
 
+    @Override
+    public int hashCode() {
+        if (id != null) {
+            return id.intValue();
+        }
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Group) {
+           Group otherObj = (Group) obj;
+            return otherObj.getId().equals(this.getId());
+        }
+        return super.equals(obj);
+    }
+
 }

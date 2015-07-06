@@ -59,10 +59,7 @@ public class ImpactMechanism {
 
         if (obj instanceof ImpactMechanism) {
            ImpactMechanism otherObj = (ImpactMechanism) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+            return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }

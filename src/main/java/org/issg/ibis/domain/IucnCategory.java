@@ -62,10 +62,7 @@ public class IucnCategory {
 
         if (obj instanceof IucnCategory) {
            IucnCategory otherObj = (IucnCategory) obj;
-           if (otherObj.getId().equals(this.getId())) {
-                return true;
-           }
-           return false;
+           return otherObj.getId().equals(this.getId());
         }
         return super.equals(obj);
     }
