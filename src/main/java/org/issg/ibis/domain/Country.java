@@ -1,19 +1,26 @@
 package org.issg.ibis.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import com.vividsolutions.jts.geom.Geometry;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(schema = "administrative_units", name = "country")
 public class Country {
+
+    private Geometry geom;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Type(type = "org.hibernate.spatial.GeometryType")
+    public Geometry getGeom() {
+        return geom;
+    }
+
+    public void setGeom(Geometry geom) {
+        this.geom = geom;
+    }
 
     private Long id;
 
