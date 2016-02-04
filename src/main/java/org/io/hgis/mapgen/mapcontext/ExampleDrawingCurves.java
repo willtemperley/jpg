@@ -18,9 +18,8 @@
  */
 package org.io.hgis.mapgen.mapcontext;
 
-import com.vividsolutions.jts.geom.Envelope;
 import org.com.conflictarm.domain.MaterialType;
-import org.com.conflictarm.style.Palette;
+import org.com.conflictarm.style.PaletteCAR;
 import org.freedesktop.cairo.Context;
 import org.freedesktop.cairo.Pattern;
 import org.gnome.gdk.Event;
@@ -33,7 +32,6 @@ import uk.ac.ox.map.carto.canvas.DataFrame;
 import uk.ac.ox.map.carto.canvas.Rectangle;
 
 import javax.persistence.EntityManager;
-import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.List;
@@ -86,7 +84,7 @@ public class ExampleDrawingCurves {
         Rectangle rect = new Rectangle(10, 10, 600, 300);
 
         DataFrame.Builder dfBuilder = new DataFrame.Builder(cs.getEnvelope(), rect, "/tmp/tmp-surface.pdf")
-            .backgroundColour(Palette.WATER.get());
+            .backgroundColour(PaletteCAR.WATER.get());
 
         DataFrame df = null;
         try {

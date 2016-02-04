@@ -11,20 +11,20 @@ public class FillStyleFactory {
   private static double defaultLineWidth = 0.2;
 
   public static FillStyle getBaseFillStyle() {
-    return getSimpleFillStyle(Palette.MED_GREY.get(), defaultLineWidth,
-        Palette.MED_GREY.get());
+    return getSimpleFillStyle(PaletteCAR.MED_GREY.get(), defaultLineWidth,
+        PaletteCAR.MED_GREY.get());
   }
 
   public static FillStyle getMaskFillStyle() {
-    return getSimpleFillStyle(Palette.MED_GREY.get(), defaultLineWidth,
-        Palette.WHITE.get());
+    return getSimpleFillStyle(PaletteCAR.MED_GREY.get(), defaultLineWidth,
+        PaletteCAR.WHITE.get());
   }
 
   public static FillStyle getWaterFillStyle() {
 
-      LineStyle outline = new LineStyle(Palette.WATER.get(), defaultLineWidth);
+      LineStyle outline = new LineStyle(PaletteCAR.WATER.get(), defaultLineWidth);
       FillStyle fs = new FillStyle(outline);
-      fs.layers.add(new SolidFillLayer(Palette.WATER.get()));
+      fs.layers.add(new SolidFillLayer(PaletteCAR.WATER.get()));
       return fs;
   }
 
@@ -44,7 +44,7 @@ public class FillStyleFactory {
 
     if (duffyFillStyle == null) {
 
-      LineStyle outline = new LineStyle(Palette.WHITE.get(0), 0);
+      LineStyle outline = new LineStyle(PaletteCAR.WHITE.get(0), 0);
       FillStyle fs = new FillStyle(outline);
 
       // Blue
@@ -61,23 +61,23 @@ public class FillStyleFactory {
 
 
   public static FillStyle getDocumentationFillStyle() {
-      return getSimpleFillStyle(Palette.BLACK.get(), defaultLineWidth,
-          Palette.RED.get());
+      return getSimpleFillStyle(PaletteCAR.BLACK.get(), defaultLineWidth,
+          PaletteCAR.RED.get());
   }
 
 
   public static FillStyle getSourceFillStyle() {
-      return getSimpleFillStyle(Palette.BLACK.get(), defaultLineWidth,
-              Palette.TEAL_BLUE.get());
+      return getSimpleFillStyle(PaletteCAR.BLACK.get(), defaultLineWidth,
+              PaletteCAR.TEAL_BLUE.get());
   }
 
   public static FillStyle getIntermediary() {
-      return getSimpleFillStyle(Palette.BLACK.get(), defaultLineWidth,
-              Palette.MED_LIGHT_GREY.get());
+      return getSimpleFillStyle(PaletteCAR.BLACK.get(), defaultLineWidth,
+              PaletteCAR.MED_LIGHT_GREY.get());
   }
 
   public static FillStyle getCapture() {
-    return getSimpleFillStyle(Palette.WHITE.get(), defaultLineWidth,
-            Palette.BLACK.get());
+    return getSimpleFillStyle(PaletteCAR.WHITE.get(), defaultLineWidth,
+            PaletteCAR.BLACK.get());
   }
 }

@@ -2,7 +2,7 @@ package org.com.conflictarm.style;
 
 import uk.ac.ox.map.domain.carto.Colour;
 
-public enum Palette {
+public enum PaletteCAR {
 
   WATER("#E6E7E8"),
   WHITE("#FFFFFF"),
@@ -18,7 +18,7 @@ public enum Palette {
 
   private String hexColour;
 
-  Palette(String hexColour) {
+  PaletteCAR(String hexColour) {
     this.hexColour = hexColour;
   }
 

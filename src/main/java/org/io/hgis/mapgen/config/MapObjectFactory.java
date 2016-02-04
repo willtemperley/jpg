@@ -1,7 +1,7 @@
 package org.io.hgis.mapgen.config;
 
 import com.vividsolutions.jts.geom.Envelope;
-import org.com.conflictarm.style.Palette;
+import org.com.conflictarm.style.PaletteCAR;
 import org.freedesktop.cairo.PdfSurface;
 import org.gnome.gdk.Pixbuf;
 import org.gnome.rsvg.Handle;
@@ -97,12 +97,12 @@ public class MapObjectFactory extends MapConfigDoc {
     Rectangle rect = node.getFrame();
 
     DataFrame.Builder dfBuilder = new DataFrame.Builder(env, rect, null)
-        .backgroundColour(Palette.WATER.get());
+        .backgroundColour(PaletteCAR.WATER.get());
 
     String hasGridStr = node.getAttribute("hasGrid");
     if (hasGridStr != null) {
-      boolean hasBorder = Boolean.valueOf(hasGridStr);
-      dfBuilder.hasGrid(hasBorder);
+      boolean hasGrid = Boolean.valueOf(hasGridStr);
+      dfBuilder.hasGrid(hasGrid);
     }
 
     String hasBorderStr = node.getAttribute("hasBorder");

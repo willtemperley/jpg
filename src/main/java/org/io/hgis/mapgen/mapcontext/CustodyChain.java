@@ -4,11 +4,12 @@ import com.google.common.base.Joiner;
 import com.vividsolutions.jts.geom.*;
 import org.com.conflictarm.domain.*;
 import org.com.conflictarm.style.FillStyleFactory;
-import org.com.conflictarm.style.Palette;
+import org.com.conflictarm.style.PaletteCAR;
 import org.io.hgis.mapgen.config.H5RasterFactory;
 import org.io.hgis.mapgen.config.MapContext;
 import uk.ac.ox.map.carto.canvas.DataFrame;
 import uk.ac.ox.map.carto.canvas.MapKeyItem;
+import uk.ac.ox.map.carto.style.Palette;
 import uk.ac.ox.map.carto.style.symbolizer.FillStyle;
 import uk.ac.ox.map.carto.style.symbolizer.LineStyle;
 import uk.ac.ox.map.carto.style.symbolizer.PointSymbolizer;
@@ -147,7 +148,7 @@ public class CustodyChain extends MapContext {
       mapKeyItems.add(mapKeyItem);
     }
 
-//    LineStyle lineStyle = new LineStyle(Palette.AUTUNITE_YELLOW.get(), 0.2);
+//    LineStyle lineStyle = new LineStyle(PaletteCAR.AUTUNITE_YELLOW.get(), 0.2);
 //    MapKeyItem mapKeyItem = new MapKeyItem("test", lineStyle);
 
     return mapKeyItems;
@@ -156,13 +157,12 @@ public class CustodyChain extends MapContext {
 
   public List<Colour> getColours() {
     List<Colour> colours = new ArrayList<Colour>();
-    colours.add(Palette.RED.get());
-    colours.add(Palette.TEAL_BLUE.get());
-    colours.add(Palette.MED_GREY.get());
-    colours.add(Palette.BLACK.get());
-    colours.add(Palette.LIGHT_GREY.get());
-    colours.add(Palette.RED.get());
-    colours.add(Palette.RED.get());
+    colours.add(PaletteCAR.RED.get());
+    colours.add(PaletteCAR.TEAL_BLUE.get());
+    colours.add(Palette.GRID.get());
+    colours.add(PaletteCAR.BLACK.get());
+    colours.add(Palette.ORANGE_DARK.get());
+    colours.add(Palette.MACAW_GREEN.get());
     return colours;
   }
 
@@ -216,7 +216,6 @@ public class CustodyChain extends MapContext {
       //todo, Horrible search!
       LineStyle redLine = null;
       for (MapKeyItem mapKeyItem : getRouteKeyItems()) {
-
         String routeName = routeNames.get(route.getId());
         if (mapKeyItem.description.equals(routeName)) {
           redLine = (LineStyle) mapKeyItem.getSymbolizer();
@@ -230,6 +229,12 @@ public class CustodyChain extends MapContext {
       for (Waypoint waypoint : getWaypoints(route)) {
 
         Geometry geom = waypoint.geom;
+
+        if (prevGeom.equals(geom)) {
+          //Happens when e.g. capture and documentation are the same.
+          continue;
+        }
+
         Coordinate coord = geom.getCoordinate();
 
         Coordinate[] arr = new Coordinate[2];
@@ -238,7 +243,6 @@ public class CustodyChain extends MapContext {
         arr[0] = prevGeom.getCoordinate();
         arr[1] = coord;
 
-//        arr[0].x
 
         LineString ls = gf.createLineString(arr);
 
@@ -248,7 +252,8 @@ public class CustodyChain extends MapContext {
           redLine.setDashes(new double[]{5.0});
         }
 
-        df.drawLineString(ls, redLine);
+//        df.drawLineString(ls, redLine);
+        df.drawCurve(ls, redLine);
 
         prevGeom = geom;
       }

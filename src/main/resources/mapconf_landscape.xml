@@ -16,8 +16,8 @@
 		<frame left="0" top="15" width="940" height="0" />
 	</subtitle>
 	
-	<dataframe hasGrid="false">
-		<frame left="20" top="40" width="900" height="550" />
+	<dataframe hasGrid="false" hasBorder="false">
+		<frame left="0" top="0" width="940" height="550" />
 	</dataframe>
 
 	<scalebar>

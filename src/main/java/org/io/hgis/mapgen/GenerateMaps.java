@@ -2,6 +2,7 @@ package org.io.hgis.mapgen;
 
 
 import org.com.conflictarm.domain.MaterialType;
+import org.com.conflictarm.style.PaletteCAR;
 import org.gnome.gtk.Gtk;
 import org.io.hgis.mapgen.config.*;
 import org.io.hgis.mapgen.mapcontext.CustodyChain;
@@ -16,7 +17,6 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 import uk.ac.ox.map.carto.style.symbolizer.PointSymbolizer;
-import uk.ac.ox.map.carto.util.StringUtil;
 
 public class GenerateMaps {
 
@@ -45,6 +45,7 @@ public class GenerateMaps {
   public static void main(String[] args) throws Exception {
 
     Gtk.init(args);
+    EntityManager em = EMF.get().createEntityManager();
 
     DocumentBuilder builder;
     builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -54,12 +55,8 @@ public class GenerateMaps {
     MapObjectFactory base = new MapObjectFactory(doc);
 
 
-    EntityManager em = EMF.get().createEntityManager();
-
     //FIXME doing this in the mapcontext too
-
 //        DocumentationSites mc= new DocumentationSites(em);
-//
 //        process(base, mc);
 
     List<MaterialType> mt = em.createQuery("from MaterialType", MaterialType.class).getResultList();
@@ -90,9 +87,9 @@ public class GenerateMaps {
 
     MapCanvas mc = mapObjectFactory.getCanvas(outputFile.getAbsolutePath());
     DataFrame df = mapObjectFactory.getDataFrame(mapContext.getEnvelope());
-    df.setBackgroundColour(org.com.conflictarm.style.Palette.WATER.get());
+    df.setBackgroundColour(PaletteCAR.WATER.get());
 
-//    df.setBackgroundColour(Palette.WATER.get());
+//    df.setBackgroundColour(PaletteCAR.WATER.get());
 
     if (!dummyRun) {
       mapContext.drawLayers(df, null);
@@ -143,7 +140,7 @@ public class GenerateMaps {
     */
     {
       MapConfigDoc.ConfigNode node = mapObjectFactory.getConfigNode("title");
-      if (node != null) {
+      if (node == null) {
 
         String fontSizeAttr = node.getAttribute("fontSize");
         Double fontSize = Double.valueOf(fontSizeAttr);
