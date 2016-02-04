@@ -33,7 +33,7 @@ public abstract class MapContext {
 
 
       Query q = em.createNativeQuery(
-              "select id, name, iso_a2, iso_a3, geom from ne.ne_110m_admin_0_countries c " +
+              "select geom, id, name, iso_a2, iso_a3 from ne.ne_110m_admin_0_countries c " +
                       "where c.geom && st_setsrid(st_makebox2d(st_point(:minx, :miny), st_point(:maxx, :maxy)), 4326)", Admin0.class);
       q.setParameter("minx", env.getMinX());
       q.setParameter("miny", env.getMinY());

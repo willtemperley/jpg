@@ -24,9 +24,10 @@ public class Route {
     this.id = id;
   }
 
-  @Type(type = "org.hibernate.spatial.GeometryType")
-  private
-  Geometry geom;
+//  @Type(type = "org.hibernate.spatial.GeometryType")
+  @Column(columnDefinition = "geometry(Point,4326)")
+  private Geometry geom;
+
 
   public Geometry getGeom() {
     return geom;

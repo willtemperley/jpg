@@ -25,7 +25,7 @@ public class Waypoint {
     @JoinColumn(name="route_id")
     public Route route;
 
-    @Type(type = "org.hibernate.spatial.GeometryType")
+    @Column(columnDefinition = "geometry(Point,4326)")
     public Geometry geom;
 
     @Column(name = "chain_position")

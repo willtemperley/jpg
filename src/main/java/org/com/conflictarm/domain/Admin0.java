@@ -1,7 +1,6 @@
 package org.com.conflictarm.domain;
 
 import com.vividsolutions.jts.geom.Geometry;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +13,7 @@ public class Admin0 implements AdminUnit {
 
     @Override
     @Basic(fetch = FetchType.LAZY)
-    @Type(type = "org.hibernate.spatial.GeometryType")
+    @Column(columnDefinition = "geometry(MultiPolygon,4326)")
     public Geometry getGeom() {
         return geom;
     }
@@ -34,20 +33,6 @@ public class Admin0 implements AdminUnit {
     @Override
     public void setId(Long id) {
         this.id = id;
-    }
-
-    private String isoa3Id;
-
-    @Override
-    @NotNull
-    @Column(name="iso_a3")
-    public String getIsoa3Id() {
-        return isoa3Id;
-    }
-
-    @Override
-    public void setIsoa3Id(String isoa3Id) {
-        this.isoa3Id = isoa3Id;
     }
 
     private String name;
@@ -78,6 +63,21 @@ public class Admin0 implements AdminUnit {
     public void setIsoa2Id(String isoa2Id) {
         this.isoa2Id = isoa2Id;
     }
+
+  private String isoa3Id;
+
+  @Override
+  @NotNull
+  @Column(name="iso_a3")
+  public String getIsoa3Id() {
+    return isoa3Id;
+  }
+
+  @Override
+  public void setIsoa3Id(String isoa3Id) {
+    this.isoa3Id = isoa3Id;
+  }
+
 
     @Override
     public boolean equals(Object obj) {
