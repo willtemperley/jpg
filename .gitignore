@@ -1,6 +1,9 @@
+/MapGen.iml
 *.class
 target
 target/**
 .classpath
 .project
 .settings/**
+.idea/
+.DS_Store

@@ -17,7 +17,7 @@
 	</scalebar>
 	
 	<key fontSize="7">
-		<frame left="420" top="720" width="200" height="200" />
+		<frame left="20" top="720" width="580" height="200" />
 	</key>
 	
 	<legend fontSize="6" paraSpacing="6">
